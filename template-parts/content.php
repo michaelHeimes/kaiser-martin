@@ -10,12 +10,17 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header">			
+		
+		<?php if ( $project_intro = get_field('project_intro')):?>
 		<div id="project-intro" class="wrap-1250 wrap">
+
 			<div class="intro-pipe"></div>
-			<?php the_field('project_intro');?>
+			<?php echo $project_intro;?>
 			<div class="intro-pipe"></div>
+			
 		</div>
+		<?php endif;?>
 
 		<div id="project-details">
 			<h2><span><?php the_field('details_label');?></span><span id="detail-lable-colon">:</span></h2>
@@ -48,8 +53,6 @@
 		</div>
 
 	</header><!-- .entry-header -->
-
-	<?php kaiser_martin_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		
@@ -161,41 +164,48 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer wrap wrap-1250">
-		<?php if( have_rows('similar_projects') ):?>
+		
+		<?php
+		$featured_posts = get_field('similar_projects');
+		if( $featured_posts ): ?>
 			<h2 id="similar-projects-title"><?php the_field('similar_projects_title');?></h2>	
 			<div id="similar_projects">
-				<?php while ( have_rows('similar_projects') ) : the_row();?>
-					<?php 
-					$post_id = get_sub_field('single_similar_project', false, false);
-					if( $post_id ): ?>
-					<a href="<?php echo get_the_permalink($post_id); ?>">
-						
-						<div class="related-thumb-wrap">
-							<?php 
+				
+		    <?php foreach( $featured_posts as $post ): 
+		
+		        // Setup this post for WP functions (variable must be named $post).
+		        setup_postdata($post); ?>
+		        
+				<a href="<?php echo get_the_permalink($post_id); ?>">
+					
+					<div class="related-thumb-wrap">
+						<?php 
 
-							$image = get_field('banner_image', $post_id);
-							$size = 'related-thumb'; // (thumbnail, medium, large, full or custom size)
-							
-							if( $image ) {
-							
-								echo wp_get_attachment_image( $image, $size );
-							
-							}
-							
-							?>
-							<div class="related-thumb-mask"><span>Learn More</span></div>
-						</div>
+						$image = get_field('banner_image', $post_id);
+						$size = 'related-thumb'; // (thumbnail, medium, large, full or custom size)
 						
-						<h3><?php echo get_the_title($post_id); ?></h3>
+						if( $image ) {
 						
-						<?php echo the_field('project_intro', $post_id);?>
-					</a>
-					<?php endif; ?>				
-			    <?php endwhile;?>
-			</div>
-		<?php endif; ?>					
-		
-		
+							echo wp_get_attachment_image( $image, $size );
+						
+						}
+						
+						?>
+						<div class="related-thumb-mask"><span>Learn More</span></div>
+					</div>
+					
+					<h3><?php echo get_the_title($post_id); ?></h3>
+					
+					<?php echo the_field('project_intro', $post_id);?>
+				</a>
+
+		    <?php endforeach; ?>
+		    </div>
+		    <?php 
+		    // Reset the global post object so that the rest of the page works correctly.
+		    wp_reset_postdata(); ?>
+		<?php endif; ?>
+					
 		
 		
 <!-- 		<?php kaiser_martin_entry_footer(); ?> -->

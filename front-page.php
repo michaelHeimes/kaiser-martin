@@ -53,6 +53,23 @@ get_header();
 					<?php endif; ?>
 				<?php endwhile; ?>
 			<?php endif; ?>
+
+			<?php if( have_rows('middle') ): 
+				while( have_rows('middle') ): the_row();
+					$post_id = get_sub_field('page', false, false);
+					if( $post_id ): ?>
+					<?php
+					$imgID = get_sub_field('image');
+					$imgSize = "full";
+					$imgArr = wp_get_attachment_image_src( $imgID, $imgSize );
+					?>
+					<?php 
+					if( !empty($imgID) ): ?>
+					<a href="<?php echo get_the_permalink($post_id); ?>" style="background-image: url(<?php echo $imgArr[0]; ?> );background-repeat: no-repeat;background-position: center center; background-size:cover;" id="home-nav-bottom-left"><span class="link-label"><?php echo get_the_title($post_id); ?></span><div class="quad-link-mask"></div></a>
+					<?php endif; ?>	
+					<?php endif; ?>
+				<?php endwhile; ?>
+			<?php endif; ?>
 			
 			<?php if( have_rows('bottom_left') ): 
 				while( have_rows('bottom_left') ): the_row();

@@ -1385,6 +1385,7 @@ span.wpcf7-not-valid-tip {
     width: 100%;
     overflow: hidden;
     background: #dedfdf;
+    border-top: 10px solid #fff;
 }
 
 #project-details h2 {
@@ -1752,7 +1753,7 @@ p#authors_position, p#authors_company_name {
 
 /* Similar Projects */
 #similar_projects {
-    display: table;
+    display: flex;
     font-size: 0;
     text-align: center;
     padding-bottom: 30px;
@@ -1939,57 +1940,58 @@ a#visit-portolio-button:before {
 
 #quad-wrap a {
 	opacity: 0;
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-    font-size: 18px;
-    font-size: 1.125rem;
-    display: table-cell;
-    display: inline-block;
-    width: 48.5%;
-    height: 47.5%;
-    margin: 0.75%;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 26px;
-    font-family: 'Plateia-Bold', arial, sans-serif;
-      transition: filter .3s linear, width 0.3s linear, height 0.3s linear;
-	  -webkit-filter: grayscale(0%);
-	  filter: grayscale(0%);
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+	font-size: 18px;
+	font-size: 1.125rem;
+	display: table-cell;
+	display: inline-block;
+	width: 48.5%;
+	min-height: calc(33.33333% - 3%);
+	margin: 0.75%;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Plateia-Bold', arial, sans-serif;
+	transition: filter .3s linear, width 0.3s linear, height 0.3s linear;
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+}
+
+#quad-wrap a:nth-child(3) {
+	width: calc(100% - 1.5%);
 }
 
 #quad-wrap a span.link-label {
     color: #fff;
     font-size: 20px;
-    font-size: 3vw;
+    font-size: 4vw;
     line-height: 1;
     position: absolute;
     letter-spacing: 1px;
     text-align: center;
     top: 50%;
-    left: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
     padding: 4px 14px 14px 14px;
-    background: rgba(0,0,0,0.25);
-    transform: translateX(-50%) translateY(-50%) scale(1);
-	transition: font-size 0.3s linear, padding 0.3s linear;
+    background-color: rgba(0,0,0,0.4);
+    transform: translateY(-50%) scale(1);
+	transition: background-color 0.3s ease;
+}
+
+#quad-wrap a:hover span.link-label {
+	background-color: rgba(151, 16, 22,1);
 }
 
 @media screen and (min-width: 992px) {
-	#quad-wrap a.grow {
-	    width: 62.5%;
-	    height: 61.5%;
+	
+	#quad-wrap a {
+   	 min-height: calc(33.33333% - 33px - 1.25%);
 	}
 	
-	#quad-wrap a.shrink-width {
-		width: 34.5%;
-	}
-	
-	#quad-wrap a.shrink-width.stretch-height {
-	    height: 61.5%;	
-	}
-	
-	#quad-wrap a.shrink-height {
-		height: 33.5%;
+	#quad-wrap a span.link-label {
+		font-size: 3vw;
 	}
 	
 	.quad-link-mask {
@@ -2105,23 +2107,38 @@ a#visit-portolio-button:before {
 }
 
 .single-team-member h3, .single-team-member h4 {
-	padding: 0 24px;
+	margin: 0;
 	text-align: left;
 	font-size: 22px;
 	line-height: 1;
 }
 
 .single-team-member h3 {
-	margin: 28px 0 2px;
-}
-
-.single-team-member h4 {
-	margin: 0 0 28px 0;
+	margin: 28px 0 4px;
 }
 
 .staff-img-wrap {
 	overflow: hidden;
     position: relative;
+}
+
+.staff-text-wrap {
+	padding: 0 15px;
+	margin: 0 0 28px 0;
+}
+
+.email-wrap {
+	text-align: left;
+	overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;	
+}
+
+.email-wrap a {
+	line-height: 1.05;
+	text-decoration: none;
+	font-size: 14px;
 }
 
 .staff-img-wrap img {
@@ -2205,6 +2222,21 @@ button.bio-button:hover {
     margin: 5vh auto;
 }
 
+.bio-copy-inner .email-wrap {
+	text-align: left;
+	overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;	
+    padding-bottom: 20px;
+}
+
+.bio-copy-inner .email-wrap a {
+	line-height: 1.05;
+	text-decoration: none;
+	font-size: 16px;
+}
+
 button.bio-nav {
 	color: #E09F3E;
     position: absolute;
@@ -2264,7 +2296,7 @@ button.bio-copy-close:hover svg {
 }
 
 img.team-card-add-grffin {
-	margin: 0 auto;
+	margin: 15px auto 0;
 }
 
 .bio-copy-wrap-text-wrap {
@@ -2290,7 +2322,7 @@ img.team-card-add-grffin {
 .bio-copy-scroll {
 	position: relative;
 	max-height: 257px;
-    overflow: scroll;
+    overflow: auto;
     border-top: 3px solid #dedfdf;
 }
 
@@ -2316,7 +2348,7 @@ img.team-card-add-grffin {
 	}
 	
 	.bio-copy-wrap-text-wrap {
-		padding: 40px;
+		padding: 40px 40px 50px;
 	}
 	
 	button.bio-copy-close {
@@ -2329,11 +2361,11 @@ img.team-card-add-grffin {
 	}	
 	
 	button.bio-next.bio-nav {
-	    right: 30px;
+	    right: 40px;
 	}
 	
 	button.bio-prev.bio-nav {
-	    left: 30px;
+	    left: 40px;
 	}
 }
 
@@ -2378,7 +2410,7 @@ p#just-show {
     display: table;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 /*
@@ -2400,11 +2432,14 @@ p#just-show {
     background-color: #335C67;
     display: table-cell;
     width: 100%;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+	flex: 1 0 20%;
     text-align: center;
     transition: background-color 0.25s ease;
+}
+
+#portfolio-filter-button-wrap button:first-child {
+	flex: 1 1 100%;
+	padding: 15px 20px;
 }
 
 #portfolio-filter-button-wrap button.is-checked, #portfolio-filter-button-wrap button:hover {
@@ -2566,7 +2601,7 @@ article.project-archive-preview:hover span:after {
     }
     
 	article.project-archive-preview {
-	margin: 70px 0;
+	margin: 35px 0;
 		-webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,0);
 	    box-shadow: 0 0px 0px 0 rgba(0,0,0,0);
 	}
@@ -2630,6 +2665,7 @@ article.project-archive-preview:hover span:after {
 }
 
 button#load-more {
+	margin-top: 30px;
     width: 100%;
     color: #fff;
     font-size: 20px;

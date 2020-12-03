@@ -37,10 +37,11 @@ get_header();
 				<p id="just-show">Show Me:</p>
 				<div id="portfolio-filter-button-wrap" class="button-group">
 					<button class="button is-checked active" data-filter="*" type="button">All</button>
-					<button data-filter=".category-residential" type="button">Residential</button>
 					<button data-filter=".category-commercial-industrial" type="button">Commercial & Industrial</button>
-					<button data-filter=".category-institutional-ecclesiastical" type="button">Institutional & Ecclesiastical</button>
-					<button data-filter=".category-equestrian" type="button">Equestrian</button>
+					<button data-filter=".category-church-educational" type="button">Church & Educational</button>
+					<button data-filter=".category-cold-storage-food-processing" type="button">Cold Storage & Food Processing</button>
+					<button data-filter=".category-residential" type="button">Residential</button>
+					<button data-filter=".category-equestrian-agricultural" type="button">Equestrian & Agricultural</button>
 				</div>
 
 <!--
@@ -222,6 +223,7 @@ get_header();
   //****************************
   // Isotope Load more button
   //****************************
+/*
   var initShow = 3; //number of items loaded on init & onclick load more button
   var counter = initShow; //counter for load more button
   var iso = $grid.data('isotope'); // get Isotope instance
@@ -263,6 +265,7 @@ get_header();
 
     loadMore(counter);
   });
+*/
 
   //when filter button clicked
   $("#portfolio-filter-button-wrap").click(function() {

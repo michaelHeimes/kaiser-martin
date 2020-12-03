@@ -31,59 +31,6 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<?php if(is_front_page()):?>
-<script>
-jQuery(document).ready(function( $ ) {
-// 	Home Page Animations
-	var homePageGrid = new TimelineMax();
-	var duration = ("0.75")
-	homePageGrid.delay(1)
-	.to('a#home-nav-top-left', duration, {opacity:1, ease: Linear.none})
-	.to('a#home-nav-top-right', duration, {opacity:1, ease: Linear.none}, 0.2)
-	.to('a#home-nav-bottom-right', duration, {opacity:1, ease: Linear.none}, 0.3)
-	.to('a#home-nav-bottom-left', duration, {opacity:1, ease: Linear.none}, 0.4)
-
-
-// 	Home Nav Hover 
-	$('#quad-wrap a').hover(function() {
-	    $('#quad-wrap a').not(this).toggleClass('other-nav');
-	})
-	
-	$('a#home-nav-top-left').hover(function() {
-	    $('a#home-nav-top-right').toggleClass('shrink-width');
-	    $('a#home-nav-top-right').toggleClass('stretch-height');
-	    $('a#home-nav-bottom-left').toggleClass('shrink-height');
-	    $('a#home-nav-bottom-right').toggleClass('shrink-height');
-		$(this).toggleClass('grow');
-	})
-	
-	$('a#home-nav-top-right').hover(function() {
-	    $('a#home-nav-top-left').toggleClass('shrink-width');
-	    $('a#home-nav-top-left').toggleClass('stretch-height');
-	    $('a#home-nav-bottom-left').toggleClass('shrink-height');
-	    $('a#home-nav-bottom-right').toggleClass('shrink-height');
-		$(this).toggleClass('grow');
-	})
-	
-	$('a#home-nav-bottom-left').hover(function() {
-	    $('a#home-nav-top-left').toggleClass('shrink-height');
-	    $('a#home-nav-top-right').toggleClass('shrink-height');
-	    $('a#home-nav-bottom-right').toggleClass('shrink-width');
-	    $('a#home-nav-bottom-right').toggleClass('stretch-height');
-		$(this).toggleClass('grow');
-	})
-	
-	$('a#home-nav-bottom-right').hover(function() {
-	    $('a#home-nav-top-left').toggleClass('shrink-height');
-	    $('a#home-nav-bottom-left').toggleClass('shrink-width');
-	    $('a#home-nav-bottom-left').toggleClass('stretch-height');
-	    $('a#home-nav-top-right').toggleClass('shrink-height');
-		$(this).toggleClass('grow');
-	})
-});	
-
-</script>
-<?php endif;?>
 
 <?php if(is_page_template('page-template-company-page.php')):?>
 <script>

@@ -23,6 +23,15 @@ get_header();
 				<div class="gray-copy-mask"></div>
 				<div><?php the_field('who_we_are_copy');?></div>
 			</div>
+			
+			<div class="core-values-wrap">
+				<?php 
+				$image = get_field('core_values_gif');
+				if( !empty( $image ) ): ?>
+				    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+				<?php endif; ?>
+			</div>
+			
 		</div>
 		
 		<div id="our-team">
@@ -31,7 +40,7 @@ get_header();
 				<div class="centered"><?php the_field('our_team_copy');?></div>
 			</div>
 		</div>
-		
+				
 		<div id="team-cards-wrap">
 			<div id="bio-copy-wrap-mask"></div>
 			<div id="team-cards-inner" class="wrap-1250 wrap">
@@ -70,8 +79,18 @@ get_header();
 									<button type="button" class="bio-button"><i class="fas fa-info"></i></button>
 								<?php endif;?>
 							</div>
-							<?php the_title( '<h3>', '</h3>' ); ?>
-							<h4><?php the_field('position');?></h4>
+							
+							<div class="staff-text-wrap">
+								<?php the_title( '<h3>', '</h3>' ); ?>
+								<h4><?php the_field('position');?></h4>
+								
+								<?php if ( $email = get_field('email_address') ):?>
+								<div class="email-wrap">
+									<a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
+								</div>
+								<?php endif;?>
+							</div>
+							
 							<div class="bio-copy-wrap">
 								<div class="bio-click-close"></div>
 								<div class="bio-copy-inner">
@@ -100,6 +119,13 @@ get_header();
 									<div class="bio-copy-wrap-text-wrap">
 										<?php the_title( '<h3>', '</h3>' ); ?></h3>
 										<h4><?php the_field('position');?></h4>
+										
+										<?php if ( $email = get_field('email_address') ):?>
+										<div class="email-wrap">
+											<a href="mailto:<?php echo $email;?>"><?php echo $email;?></a>
+										</div>
+										<?php endif;?>
+										
 										<div class="bio-copy-scroll"><?php the_field('bio_copy');?></div>
 										<div class="under-copy-scroll"></div>
 										<button type="button" class="bio-prev bio-nav"><i class="fas fa-angle-left"></i></button>
