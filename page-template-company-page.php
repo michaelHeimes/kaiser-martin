@@ -138,7 +138,25 @@ get_header();
 				<?php wp_reset_postdata(); // reset the query ?>
 			</div>
 		</div>
-
+		
+		<div id="our-history" class="wrap-1250 wrap">
+			<h2><?php the_field('who_we_are_title');?></h2>
+			<div class="copy-gray-left-wrap">
+				<div class="gray-copy-mask"></div>
+				<div><?php the_field('who_we_are_copy');?></div>
+			</div>
+			
+			<div class="core-values-wrap">
+				<?php 
+				$image = get_field('core_values_gif');
+				if( !empty( $image ) ): ?>
+				    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+				<?php endif; ?>
+			</div>
+			
+		</div>
+		
+		
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
