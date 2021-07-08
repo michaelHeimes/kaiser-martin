@@ -21,6 +21,12 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
 	
+	<script>
+		FontAwesomeConfig = {
+		  searchPseudoElements: true
+		}
+	</script>
+	
 	<?php if(is_page_template('page-template-contact-page.php')):?>	
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
 	   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -75,7 +81,28 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation wrap wrap-1250">
-			<?php the_custom_logo();?>
+			<a class="custom-logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			
+			<?php if( get_field('logo_color') == 'white' ):?>
+			
+				<?php 
+				$image = get_field('header_logo_white', 'option');
+				if( !empty( $image ) ): ?>
+				    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+				<?php endif; ?>
+	
+			<?php else:?>
+			
+				<?php 
+				$image = get_field('header_logo_black', 'option');
+				if( !empty( $image ) ): ?>
+				    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+				<?php endif; ?>
+	
+			<?php endif;?>
+			
+			</a>
+			
 <!-- 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kaiser-martin' ); ?></button> -->
 			<div id="header-menus-wrap">
 				<?php

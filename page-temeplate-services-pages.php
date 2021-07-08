@@ -94,66 +94,7 @@ get_header();
 				<?php endif;?>
 				<?php endwhile;?>
 			<?php endif; ?>						
-		<?php endif; ?>					
-			
-		<?php if( have_rows('featured_projects') ):?>
-			<div id="featured-title-wrap">
-				<h2><?php the_field('featured_projects_title');?></h2>	
-			</div>
-			<section id="features-wrap">
-				<div class="wrap-1250 wrap">
-					<?php while ( have_rows('featured_projects') ) : the_row();?>
-						<?php 
-						$post_id = get_sub_field('single_featured_project', false, false);
-						if( $post_id ): ?>
-						
-						<article class="project-archive-preview">
-							<a href="<?php echo get_the_permalink($post_id); ?>">
-	
-								<div class="project-archive-preview-img-wrap project-archive-preview-img-wrap-mobile project-archive-preview-half">
-									<?php 
-									$image = get_field('banner_image', $post_id);
-									$size = 'large';
-									if( $image ) {
-										echo wp_get_attachment_image( $image, $size );
-									}
-									?>
-								</div>
-		
-								<?php
-									$imgID = get_field('banner_image', $post_id);
-									$imgSize = "large"; // (thumbnail, medium, large, full or custom size)
-									$imgArr = wp_get_attachment_image_src( $imgID, $imgSize );
-									// url = $image[0];
-									// width = $image[1];
-									// height = $image[2];
-								?>
-			 						
-								<div class="project-archive-preview-img-wrap project-archive-preview-img-wrap-desktop project-archive-preview-half" style="background-image: url(<?php echo $imgArr[0]; ?> );"></div>
-		
-								<div class="project-archive-preview-text-wrap project-archive-preview-half">
-									<h2><?php echo get_the_title($post_id); ?></h2>
-									<?php the_field('project_intro', $post_id);?>
-									<span>learn more</span>
-								</div>
-								<div class="project-archive-griffin"></div>
-							</a>
-						</article>
-	
-						<?php endif; ?>				
-				    <?php endwhile;?>
-				</div>
-				<div class="wrap-1250 wrap">
-					<a id="visit-portolio-button" href="<?php echo esc_url( home_url( '/' ) ); ?>portfolio">Visit Full Portfolio</a>
-				</div>
-			</section>
-			
-		<?php endif; ?>			
-			
-			
-			
-			
-
+		<?php endif; ?>
 			
 		</section>
 

@@ -129,16 +129,6 @@ function kaiser_martin_scripts() {
 	
 	wp_enqueue_script('jquery');
 	
-	wp_enqueue_script('greensock-tweenMax', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js', array(), '20151215', true);
-	
-	wp_enqueue_script('greensock-scrollTo', '//cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js', array(), '20151215', true);
-	
-// 	wp_enqueue_script('greensock-easePack', '//cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/easing/EasePack.min.js', array(), '20151215', true);
-		
-	wp_enqueue_script('scroll-magic', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js', array(), '20151215', true);
-	
-	wp_enqueue_script('scroll-magic-gsap', '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js', array(), '20151215', true);
-	
 	wp_enqueue_script( 'kaiser-martin-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
